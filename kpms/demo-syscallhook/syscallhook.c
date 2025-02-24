@@ -19,7 +19,7 @@ KPM_LICENSE("GPL v2");
 KPM_AUTHOR("bmax121");
 KPM_DESCRIPTION("KernelPatch Module System Call Hook Example");
 
-const char *margs = 0;
+const char *margs = 1;
 enum hook_type hook_type = NONE;
 
 enum pid_type
