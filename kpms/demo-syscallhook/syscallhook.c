@@ -74,7 +74,6 @@ static long syscall_hook_demo_init(const char *args, const char *event, void *__
 {
     margs = args;
     pr_info("kpm-syscall-hook-demo init ..., args: %s\n", margs);
-    margs = 1;
 
     __task_pid_nr_ns = (typeof(__task_pid_nr_ns))kallsyms_lookup_name("__task_pid_nr_ns");
     pr_info("kernel function __task_pid_nr_ns addr: %llx\n", __task_pid_nr_ns);
