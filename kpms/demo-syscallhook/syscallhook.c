@@ -19,7 +19,7 @@ KPM_LICENSE("GPL v2");
 KPM_AUTHOR("bmax121");
 KPM_DESCRIPTION("KernelPatch Module System Call Hook Example");
 
-const char *margs = 1;
+const char *margs = 0;
 enum hook_type hook_type = NONE;
 
 enum pid_type
@@ -74,6 +74,7 @@ static long syscall_hook_demo_init(const char *args, const char *event, void *__
 {
     margs = args;
     pr_info("kpm-syscall-hook-demo init ..., args: %s\n", margs);
+    margs = 1;
 
     __task_pid_nr_ns = (typeof(__task_pid_nr_ns))kallsyms_lookup_name("__task_pid_nr_ns");
     pr_info("kernel function __task_pid_nr_ns addr: %llx\n", __task_pid_nr_ns);
