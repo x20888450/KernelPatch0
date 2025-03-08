@@ -32,21 +32,21 @@ jobs:
       - name: Build kpimg
         run: |
           export TARGET_COMPILE=`pwd`/arm-gnu-toolchain-12.2.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-
-          cd kernel
+          # cd kernel
 
           export ANDROID=1
-          make
-          mv kpimg kpimg-android
-          mv kpimg.elf kpimg.elf-android
-          make clean
+          # make
+          # mv kpimg kpimg-android
+          # mv kpimg.elf kpimg.elf-android
+          # make clean
 
-          unset ANDROID
-          make
-          mv kpimg kpimg-linux
-          mv kpimg.elf kpimg.elf-linux
-          make clean
+          # unset ANDROID
+          # make
+          # mv kpimg kpimg-linux
+          # mv kpimg.elf kpimg.elf-linux
+          # make clean
 
-          cd ..
+          # cd ..
           cd kpms
 
           cd demo-hello
@@ -61,13 +61,13 @@ jobs:
           make
           mv syscallhook.kpm demo-syscallhook.kpm
 
-      - name: Upload elf
-        uses: actions/upload-artifact@v4
-        with:
-          path: |
-            kernel/kpimg.elf-linux
-            kernel/kpimg.elf-android
-          name: kpimg.elf
+      # - name: Upload elf
+        # uses: actions/upload-artifact@v4
+        # with:
+          # path: |
+            # kernel/kpimg.elf-linux
+            # kernel/kpimg.elf-android
+          # name: kpimg.elf
 
       - name: Release
         uses: ncipollo/release-action@v1.14.0
@@ -75,8 +75,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.parse_version.outputs.VERSION }}
           artifacts: |
-            kernel/kpimg-linux
-            kernel/kpimg-android
+            # kernel/kpimg-linux
+            # kernel/kpimg-android
             kpms/demo-hello/demo-hello.kpm
             kpms/demo-inlinehook/demo-inlinehook.kpm
             kpms/demo-syscallhook/demo-syscallhook.kpm
@@ -120,4 +120,3 @@ jobs:
           allowUpdates: true
           replacesArtifacts: true
  
-
